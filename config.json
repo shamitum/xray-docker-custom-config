@@ -23,15 +23,18 @@
     },
     {
       "listen": null,
-      "port": 8080,
-      "protocol": "vmess",
+      "port": 2083,
+      "protocol": "vless",
       "settings": {
         "clients": [
           {
             "email": "DSI",
-            "id": "5fdf114b-1963-4429-aa17-d034d6e7e9ae"
+            "flow": "",
+            "id": "40b1623c-6cfe-44ef-b6f6-3e9aefc1f0c7"
           }
-        ]
+        ],
+        "decryption": "none",
+        "fallbacks": []
       },
       "sniffing": {
         "destOverride": [
@@ -43,17 +46,35 @@
         "enabled": true
       },
       "streamSettings": {
-        "network": "ws",
-        "security": "none",
-        "wsSettings": {
-          "acceptProxyProtocol": false,
-          "headers": {
-            "Host": "media-ecst.licdn.com"
+        "grpcSettings": {
+          "multiMode": true,
+          "serviceName": ""
+        },
+        "network": "grpc",
+        "realitySettings": {
+          "dest": "twitter.com:443",
+          "maxClient": "",
+          "maxTimediff": 0,
+          "minClient": "",
+          "privateKey": "0PMm4BafOB-0ZkAHM99UTEc3BN1nLqkHB0ORP6syPnU",
+          "serverNames": [
+            "twitter.com"
+          ],
+          "settings": {
+            "fingerprint": "chrome",
+            "publicKey": "hrF4O0_5-4XP86pYBEUIWWt6olucApod9M5N_--kV1I",
+            "serverName": "",
+            "spiderX": "/"
           },
-          "path": "/"
-        }
+          "shortIds": [
+            "71d04112"
+          ],
+          "show": false,
+          "xver": 0
+        },
+        "security": "reality"
       },
-      "tag": "inbound-8080"
+      "tag": "inbound-2083"
     }
   ],
   "log": {
