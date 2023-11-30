@@ -30,7 +30,7 @@
           {
             "email": "DSI",
             "flow": "",
-            "id": "40b1623c-6cfe-44ef-b6f6-3e9aefc1f0c7"
+            "id": "4a718a40-6ec4-43e0-825a-b5fda6a3d5c3"
           }
         ],
         "decryption": "none",
@@ -52,22 +52,22 @@
         },
         "network": "grpc",
         "realitySettings": {
-          "dest": "twitter.com:443",
+          "dest": "google.com:443",
           "maxClient": "",
           "maxTimediff": 0,
           "minClient": "",
-          "privateKey": "0PMm4BafOB-0ZkAHM99UTEc3BN1nLqkHB0ORP6syPnU",
+          "privateKey": "WJL-4dRQFOpho-G12Y_oqpXtO__0BD2tGDffvXmO0mQ",
           "serverNames": [
             "twitter.com"
           ],
           "settings": {
             "fingerprint": "chrome",
-            "publicKey": "hrF4O0_5-4XP86pYBEUIWWt6olucApod9M5N_--kV1I",
+            "publicKey": "7eFmdtAfJG62D2w_RibknL5LUwkiO0R0jweFliUDzCQ",
             "serverName": "",
             "spiderX": "/"
           },
           "shortIds": [
-            "71d04112"
+            "d5d13234"
           ],
           "show": false,
           "xver": 0
