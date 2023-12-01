@@ -30,7 +30,7 @@
           {
             "email": "DSI",
             "flow": "",
-            "id": "4a718a40-6ec4-43e0-825a-b5fda6a3d5c3"
+            "id": "3b855f47-8402-4725-9df3-64f07c32e13a"
           }
         ],
         "decryption": "none",
@@ -56,18 +56,18 @@
           "maxClient": "",
           "maxTimediff": 0,
           "minClient": "",
-          "privateKey": "WJL-4dRQFOpho-G12Y_oqpXtO__0BD2tGDffvXmO0mQ",
+          "privateKey": "8IKq-5dTtEqsG_JTTGiv3HRfkU53AlMUx2SIc_XrG3w",
           "serverNames": [
             "twitter.com"
           ],
           "settings": {
-            "fingerprint": "chrome",
-            "publicKey": "7eFmdtAfJG62D2w_RibknL5LUwkiO0R0jweFliUDzCQ",
+            "fingerprint": "firefox",
+            "publicKey": "R1fOCRhoCyfZ5PBPKaGF76QaJu_4vLGoSi_ojT-mnxQ",
             "serverName": "",
             "spiderX": "/"
           },
           "shortIds": [
-            "d5d13234"
+            "44816ab7"
           ],
           "show": false,
           "xver": 0
