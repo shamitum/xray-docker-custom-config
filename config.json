@@ -1,136 +1,127 @@
 {
-  "api": {
-    "services": [
-      "HandlerService",
-      "LoggerService",
-      "StatsService"
-    ],
-    "tag": "api"
+  "log": {
+    "loglevel": "error"
   },
-  "dns": null,
-  "fakeDns": null,
+  "dns": {
+    "servers": ["tcp+local://1.1.1.1","tcp+local://1.0.0.1"]
+  },
   "inbounds": [
     {
-      "listen": "127.0.0.1",
-      "port": 62789,
+      "listen": "0.0.0.0",
+      "port": 8080,
       "protocol": "dokodemo-door",
       "settings": {
-        "address": "127.0.0.1"
-      },
-      "sniffing": null,
-      "streamSettings": null,
-      "tag": "api"
+        "address": "zoom.us",
+        "port": 80,
+        "network": "tcp"
+      }
     },
     {
-      "listen": null,
-      "port": 2083,
+      "listen": "0.0.0.0",
+      "port": 8443,
       "protocol": "vless",
+      "tag": "inbound",
       "settings": {
-        "clients": [
-          {
-            "email": "DSI",
-            "flow": "",
-            "id": "3b855f47-8402-4725-9df3-64f07c32e13a"
-          }
-        ],
-        "decryption": "none",
-        "fallbacks": []
-      },
-      "sniffing": {
-        "destOverride": [
-          "http",
-          "tls",
-          "quic",
-          "fakedns"
-        ],
-        "enabled": true
+        "clients": [{"id": "523b2163-4a56-43cd-8f31-2adc2e404065", "flow": "xtls-rprx-vision", "email": "RealityEZPZ"}],
+        "decryption": "none"
       },
       "streamSettings": {
-        "grpcSettings": {
-          "multiMode": true,
-          "serviceName": ""
-        },
-        "network": "grpc",
-        "realitySettings": {
-          "dest": "google.com:443",
-          "maxClient": "",
-          "maxTimediff": 0,
-          "minClient": "",
-          "privateKey": "8IKq-5dTtEqsG_JTTGiv3HRfkU53AlMUx2SIc_XrG3w",
-          "serverNames": [
-            "twitter.com"
-          ],
-          "settings": {
-            "fingerprint": "firefox",
-            "publicKey": "R1fOCRhoCyfZ5PBPKaGF76QaJu_4vLGoSi_ojT-mnxQ",
-            "serverName": "",
-            "spiderX": "/"
-          },
-          "shortIds": [
-            "44816ab7"
-          ],
-          "show": false,
-          "xver": 0
-        },
-        "security": "reality"
+        
+        
+        
+        "network": "tcp",
+        "security":"reality",
+    "realitySettings":{
+      "show": false,
+      "dest": "zoom.us:443",
+      "xver": 0,
+      "serverNames": ["zoom.us"],
+      "privateKey": "uNbTKBHsFD1ekCNPM3DNXI9mCbG50fWAHFhU_-lCBGw",
+      "maxTimeDiff": 60000,
+      "shortIds": ["3d7fde089e7fe9d0"]
+    }
       },
-      "tag": "inbound-2083"
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
     }
   ],
-  "log": {
-    "error": "./error.log",
-    "loglevel": "warning"
-  },
   "outbounds": [
     {
       "protocol": "freedom",
-      "settings": {}
+      "tag": "internet"
     },
+    
     {
       "protocol": "blackhole",
-      "settings": {},
-      "tag": "blocked"
+      "tag": "block"
     }
   ],
-  "policy": {
-    "levels": {
-      "0": {
-        "statsUserDownlink": true,
-        "statsUserUplink": true
-      }
-    },
-    "system": {
-      "statsInboundDownlink": true,
-      "statsInboundUplink": true
-    }
-  },
-  "reverse": null,
   "routing": {
     "domainStrategy": "IPIfNonMatch",
     "rules": [
       {
-        "inboundTag": [
-          "api"
-        ],
-        "outboundTag": "api",
-        "type": "field"
-      },
-      {
+        "type": "field",
         "ip": [
+          "geoip:cn", "geoip:ir",
+          "0.0.0.0/8",
+          "10.0.0.0/8",
+          "100.64.0.0/10",
+          "127.0.0.0/8",
+          "169.254.0.0/16",
+          "172.16.0.0/12",
+          "192.0.0.0/24",
+          "192.0.2.0/24",
+          "192.168.0.0/16",
+          "198.18.0.0/15",
+          "198.51.100.0/24",
+          "203.0.113.0/24",
+          "::1/128",
+          "fc00::/7",
+          "fe80::/10",
           "geoip:private"
         ],
-        "outboundTag": "blocked",
-        "type": "field"
+        "outboundTag": "block"
       },
       {
-        "outboundTag": "blocked",
-        "protocol": [
-          "bittorrent"
-        ],
-        "type": "field"
+        "type": "field",
+        "port": "25, 587, 465, 2525",
+        "network": "tcp",
+        "outboundTag": "block"
+      },
+      {
+        "type": "field",
+        "protocol": ["bittorrent"],
+        "outboundTag": "block"
+      },
+      {
+        "type": "field",
+        "outboundTag": "block",
+        "domain": [
+          
+          "geosite:category-ads-all",
+          "domain:pushnotificationws.com",
+          "domain:sunlight-leds.com",
+          "domain:icecyber.org"
+        ]
+      },
+      {
+        "type": "field",
+        "inboundTag": "inbound",
+        "outboundTag": "internet"
       }
     ]
   },
-  "stats": {},
-  "transport": null
+  "policy": {
+    "levels": {
+      "0": {
+        "handshake": 2,
+        "connIdle": 120
+      }
+    }
+  }
 }
